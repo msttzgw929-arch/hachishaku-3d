@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👒</text></svg>">
+<title>八尺様から逃げろ！3D</title>
+<meta name="description" content="お腹がどんどん大きくなる八尺様から逃げ回る、ブラウザで遊べる疑似3D鬼ごっこゲーム">
+<meta property="og:title" content="八尺様から逃げろ！3D"><meta property="og:image" content="assets/og.jpg">
+<meta name="theme-color" content="#0b0c16">
+<link rel="stylesheet" href="src/style.css">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.min.js" } }</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="title" class="screen">
+  <div class="titlebox">
+    <div class="kicker">ぽぽぽ…</div>
+    <h1>八尺様から<br>逃げろ！<span>3D</span></h1>
+    <p class="lead">イライラするほどお腹が大きくなる八尺様から、夜の町を逃げ回れ！</p>
+    <button id="startBtn" class="btn" disabled>よみこみ中…</button>
+    <div id="bestTitle" class="best"></div>
+    <div class="howto">
+      <div><b>移動</b> WASD / 矢印キー　｜　スマホ：ドラッグでスティック・タップした場所へ移動</div>
+      <div><b>捕まったら</b> お腹をクリック・タップ・スペース連打で脱出！</div>
+      <div><b>ルール</b> 3回捕まるとゲームオーバー。生き延びた時間がスコア。</div>
+    </div>
+    <div class="credit">音声：AivisSpeech Engine（Style-Bert-VITS2系）／ 音声モデル「F2」JVNVコーパス（CC BY-SA 4.0）<br>three.js (MIT)</div>
+  </div>
+</div>
+
+<div id="hud" class="hide">
+  <div class="tl"><div id="time">00:00.0</div><div id="hearts"></div></div>
+  <div class="tc"><div id="lv">お腹 Lv.1</div><div class="irr"><div id="irrFill"></div><span>イライラ</span></div></div>
+  <div class="tr"><button id="muteBtn" class="ibtn">🔊</button><button id="pauseBtn" class="ibtn">⏸</button></div>
+  <div id="banner"></div>
+  <div id="sub"></div>
+  <div id="arrow"></div>
+  <div id="excl">！</div>
+</div>
+
+<div id="grabui" class="hide">
+  <div id="grabTitle">お腹を連打して脱出！</div>
+  <div class="gauge"><div id="gaugeFill"></div></div>
+  <div class="gtime"><div id="gtimeFill"></div></div>
+  <div id="grabHint"></div>
+</div>
+
+<div id="joy"><div id="joyKnob"></div></div>
+
+<div id="pause" class="screen hide"><div class="panel"><h2>一時停止</h2><button id="resumeBtn" class="btn">つづける</button></div></div>
+<div id="loading" class="screen hide"><div class="panel"><h2>ボイス読み込み中…</h2></div></div>
+
+<div id="over" class="screen hide">
+  <div class="panel">
+    <h2>つかまった…</h2>
+    <div class="scorelabel">生き延びた時間</div>
+    <div id="score">00:00.0</div>
+    <div id="overStage"></div>
+    <div id="overBest"></div>
+    <div class="row"><button id="retryBtn" class="btn">もう一度</button><button id="titleBtn" class="btn sub">タイトルへ</button></div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

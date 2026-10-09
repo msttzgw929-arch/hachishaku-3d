@@ -1,0 +1,9 @@
+tools/voice_vv/
+tools/*.png
+tools/*.jpg
+__pycache__/
+screenshots/*
+!screenshots/pc_1_title.png
+!screenshots/pc_2_chase.png
+!screenshots/pc_3_grab.png
+!screenshots/pc_6_huge.png
